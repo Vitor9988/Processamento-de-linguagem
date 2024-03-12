@@ -1,0 +1,28 @@
+def identificar_complemento_verbal(frase):
+    # Lista de terminações de verbos
+    terminacoes_verbais = [        
+        "amos", "as", "eis","em",  
+        "ei", "aste", "ou", "amos", "astes", "aram",  
+        "ava", "avas", "ava", "ávamos", "áveis", "avam",  
+        "arei", "arás", "ará", "aremos", "areis", "arão",  
+        "aria", "arias", "aria", "aríamos", "aríeis", "ariam",  
+        "es", "emos", "eis",
+        "asse", "asses", "asse", "ássemos", "ásseis", "assem",
+        "ar", "ares", "ar", "armos", "ardes", "arem"
+        ]
+    palavras = frase.split()
+    for palavra in palavras:
+        for terminacao in terminacoes_verbais:
+            if palavra.endswith(terminacao):
+                index_verbo = palavras.index(palavra)
+                if index_verbo < len(palavras) - 1:
+                    complemento = " ".join(palavras[index_verbo + 1:])
+                    print("Complemento verbal encontrado:", complemento)
+                    return
+                else:
+                    print("Verbo sem complemento.")
+                    return
+    print("Não foi encontrado nenhum verbo na frase.")
+ 
+frase = input("Digite uma frase:")
+identificar_complemento_verbal(frase)
